@@ -62,6 +62,7 @@ export class SelectComponent implements ControlValueAccessor, OnChanges, OnInit 
     private filterInputWidth: number = 1;
     private isDisabled: boolean = false;
     private placeholderView: string = '';
+    private selectedValue: string = ''; 
 
     private clearClicked: boolean = false;
     private selectContainerClicked: boolean = false;
@@ -91,6 +92,7 @@ export class SelectComponent implements ControlValueAccessor, OnChanges, OnInit 
             let minNumOptions: number = changes['noFilter'].currentValue;
             this.filterEnabled = numOptions >= minNumOptions;
         }
+        this.value = this.selectedValue;
     }
 
     // Window.
@@ -212,6 +214,7 @@ export class SelectComponent implements ControlValueAccessor, OnChanges, OnInit 
 
     writeValue(value: any) {
         this.value = value;
+        this.selectedValue = value;
     }
 
     registerOnChange(fn: (_: any) => void) {
